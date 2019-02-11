@@ -1,6 +1,6 @@
 # Liquid Crystal over I2C Library for Arduino
 
-This library allows an Arduino board to control LiquidCrystal displays (LCDs) based on the Hitachi HD44780 (or a compatible) chipset, using the widely-available I2C backpack adaptor.
+This library allows an Arduino-compatible board (including ESP8266/ESP32) to control LiquidCrystal displays (LCDs) based on the Hitachi HD44780 (or a compatible) chipset, using the widely-available I2C backpack adaptor.
 
 This modification represents the most minimal deviation from the original Arduino LiquidCrystal library, providing a near drop-in replacement for existing code with minimal modifications.
 
