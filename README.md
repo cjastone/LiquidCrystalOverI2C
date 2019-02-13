@@ -1,17 +1,19 @@
 # Liquid Crystal over I2C Library for Arduino
 
-This library allows an Arduino-compatible board (including ESP8266/ESP32) to control LiquidCrystal displays (LCDs) based on the Hitachi HD44780 (or a compatible) chipset, using the widely-available I2C backpack adaptor.
+This library allows an Arduino-compatible board (including ESP8266/ESP32) to control Liquid Crystal Displays (LCDs) based on the Hitachi HD44780 (or a compatible) chipset, using the widely-available I2C 'backpack' adaptor.
 
-This modification represents the most minimal deviation from the original Arduino LiquidCrystal library, providing a near drop-in replacement for existing code with minimal modifications.
+This modification is intended to provide a minimal deviation from the original Arduino LiquidCrystal library, providing a near drop-in replacement for existing code with few modifications.
 
 To use in place of an existing LiquidCrystal implementation, simply replace the following lines of code:
 
 `#include <LiquidCrystal.h>` with `#include <LiquidCrystalOverI2C.h>`, and  
 `LiquidCrystal lcd(rs, en, d4, d5, d6, d7);` with `LiquidCrystal lcd(i2c_addr);` (usually 0x27).
 
-Additionally, any pin-based backlight control can be replaced with `lcd.backlight()` and `lcd.noBacklight()` as required.
+**LCD backlight control** can be controlled through the `lcd.backlight()` and `lcd.noBacklight()` functions as required.
 
-In testing, I've found this implementation to be aroud 63% faster than other comparable implementations; this is particularly useful for displays such as VFDs with much faster refresh rates than traditional LCDs.
+**VFD-specific brightness control** has also been implemented through the `lcd.setBrightness(value)` function, where brightness is a 2-bit value (0 is brightest, and 3 is dimmest.)  This function will have no effect on traditional LCDs.
+
+In testing, I've found this implementation to be aroud 63% faster than other comparable implementations; this is particularly useful for displays such as VFDs which feature much faster response times than traditional LCDs.
 
 ## License
 
