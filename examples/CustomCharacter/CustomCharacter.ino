@@ -9,25 +9,14 @@
  This sketch prints "I <heart> Arduino!" and a little dancing man
  to the LCD.
 
-  The circuit:
- * LCD RS pin to digital pin 12
- * LCD Enable pin to digital pin 11
- * LCD D4 pin to digital pin 5
- * LCD D5 pin to digital pin 4
- * LCD D6 pin to digital pin 3
- * LCD D7 pin to digital pin 2
- * LCD R/W pin to ground
- * 10K potentiometer:
- * ends to +5V and ground
- * wiper to LCD VO pin (pin 3)
- * 10K poterntiometer on pin A0
-
  created 21 Mar 2011
  by Tom Igoe
  modified 11 Nov 2013
  by Scott Fitzgerald
  modified 7 Nov 2016
  by Arturo Guadalupi
+ modified 14 Feb 2019 (for I2C support)
+ by Chris Stone
 
  Based on Adafruit's example at
  https://github.com/adafruit/SPI_VFD/blob/master/examples/createChar/createChar.pde
@@ -41,12 +30,11 @@
 */
 
 // include the library code:
-#include <LiquidCrystal.h>
+#include <LiquidCrystalOverI2C.h>
 
-// initialize the library by associating any needed LCD interface pin
-// with the arduino pin number it is connected to
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+// initialize the library by associating the address of the I2C device
+const int addr = 0x27;
+LiquidCrystal lcd(addr);
 
 // make some custom characters:
 byte heart[8] = {
